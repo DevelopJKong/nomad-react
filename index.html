@@ -12,6 +12,7 @@
   <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
     function Btn({ text,onClick }) {
       return (
@@ -23,12 +24,17 @@
             padding: "10px 20px",
             border: 0,
             borderRadius: 10,
-           
+
           }}
         >
           {text}
         </button>
       );
+    }
+
+    Btn.protoTypes = {
+      text:PropTypes.string.isRequired,
+      fontSize:PropTypes.number.isRequired,
     }
     const MemorizedBtn = React.memo(Btn);
     function App() {
@@ -39,8 +45,8 @@
       //다시 그려지지 않게 만들수있다
       return (
         <div>
-          <MemorizedBtn text={value} onClick={changeValue} />
-          <MemorizedBtn text="Continue"/>
+          <MemorizedBtn text={value} fontSize={18} />
+          <MemorizedBtn text={14} fontSize={"Continue"} />
         </div>
       );
     }
